@@ -1,0 +1,55 @@
+{
+    "name": "lifeboat/silverstripe",
+    "type": "silverstripe-vendormodule",
+    "description": "Lifeboat PHP SDK - Silverstripe Wrapper",
+    "license": "BSD-3-Clause",
+    "homepage": "https://lifeboat.app/docs/api",
+    "keywords": [
+        "lifeboat", "sdk", "silverstripe"
+    ],
+    "authors": [
+        {
+            "name": "Lifeboat",
+            "email": "hello@lifeboat.app",
+            "homepage": "https://lifeboat.app",
+            "role": "Developer"
+        },
+        {
+            "name": "Lifeboat Community",
+            "homepage": "https://lifeboat.app",
+            "role": "Mantainer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lifeboat\\": "src",
+            "Lifeboat\\Models\\": "src/models",
+            "Lifeboat\\Extensions\\": "src/extensions",
+            "Lifeboat\\Controllers\\": "src/controllers",
+            "Lifeboat\\Exceptions\\": "src/exceptions"
+        }
+    },
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "lifeboat/php-sdk": "dev-main",
+        "silverstripe/config": "~1.2.0@stable",
+        "silverstripe/framework": "^4.9.0@stable",
+        "silverstripe/mimevalidator": "~2.2.0@stable"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~8"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "XDEBUG_MODE=coverage phpunit"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
+}

@@ -1,0 +1,9 @@
+---
+Name: lifeboat_silverstripe_routes
+After:
+- '#rootroutes'
+- '#coreroutes'
+---
+SilverStripe\Control\Director:
+  rules:
+    'lifeboat-auth//$Action/$ID/$OtherID': 'Lifeboat\Controllers\Auth'

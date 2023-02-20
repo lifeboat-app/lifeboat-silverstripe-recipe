@@ -24,6 +24,12 @@ class SiteObject extends DataExtension {
         'Site' => Site::class
     ];
 
+    public function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        $this->owner->SiteID = Site::curr()->ID;
+    }
+
     public function augmentSQL(SQLSelect $query, DataQuery $dataQuery = null)
     {
         $site = Site::curr();

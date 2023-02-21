@@ -19,10 +19,10 @@ class Site extends DataObject {
 
     /** @var App */
     private static $_app = null;
-
     private static $APP_ID      = '';
     private static $APP_SECRET  = '';
-
+    
+    private static $table_name = 'LBSite';
     private static $db = [
         'SITE_KEY'  => DBVarchar::class,
         'SITE_HOST' => DBVarchar::class

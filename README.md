@@ -33,7 +33,7 @@ After:
 ---
 Lifeboat\Models\Site:
   APP_ID: "[[YOUR APP ID]]"
-  APP_SECRET: ""
+  APP_SECRET: "[[YOUR APP SECRET]]"
 ---
 ```
 

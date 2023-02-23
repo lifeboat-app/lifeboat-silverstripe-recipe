@@ -23,6 +23,20 @@ LIFEBOAT_APP_ID='[[Your App ID goes here]]'
 LIFEBOAT_APP_SECRET='[[Your App Secret goes here]]'
 ```
 
+### Alternatively create a `.yml` config
+**lifeboat.yml**
+```yml
+---
+Name: lifeboat_config
+After:
+  - '#lifeboat_silverstripe_app'
+---
+Lifeboat\Models\Site:
+  APP_ID: "[[YOUR APP ID]]"
+  APP_SECRET: ""
+---
+```
+
 <p>&nbsp;</p>
 
 ## Helper Classes

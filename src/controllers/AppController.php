@@ -29,6 +29,14 @@ class AppController extends Controller {
             return $auth->reloadAuth();
         }
 
+        // This ensures the user is logged in & current token is valid
+        try {
+            Site::app()->getSites();
+        } catch (OAuthException $e) {
+            $auth = new Auth();
+            return $auth->reloadAuth();
+        }
+        
         return parent::handleRequest($request);
     }
 

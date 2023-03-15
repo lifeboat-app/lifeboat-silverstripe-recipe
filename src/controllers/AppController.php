@@ -31,7 +31,7 @@ class AppController extends Controller {
 
         // This ensures the user is logged in & current token is valid
         try {
-            Site::app()->getSites();
+            foreach (Site::app()->products->all() as $product) break;
         } catch (OAuthException $e) {
             $auth = new Auth();
             return $auth->reloadAuth();

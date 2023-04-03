@@ -9,16 +9,18 @@ use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Control\HTTPRequest;
 use SilverStripe\Control\HTTPResponse;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\View\TemplateGlobalProvider;
 
 /**
  * Class Auth
  *
  * @package Lifeboat\Controllers
  */
-class Auth extends Controller {
+class Auth extends Controller implements TemplateGlobalProvider {
 
     private static $url_segment     = 'lifeboat-auth';
-    private static $allowed_actions = ['process', 'error'];
+    private static $allowed_actions = ['process', 'error', 'logout'];
 
     /**
      * @param HTTPRequest $request
@@ -37,6 +39,11 @@ class Auth extends Controller {
         }
 
         return parent::handleRequest($request);
+    }
+
+    public function logout(HTTPRequest $request): HTTPResponse
+    {
+        return $this->reloadAuth();
     }
 
     /**
@@ -90,4 +97,26 @@ class Auth extends Controller {
         return $this->redirect(Site::app()->getAuthURL($process, $error, $challenge));
     }
 
+    /**
+     * @return string
+     */
+    public static function logout_url(): string
+    {
+        return Director::absoluteURL(
+            Controller::join_links(
+                Config::inst()->get(self::class, 'url_segment'),
+                'logout'
+            )
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public static function get_template_global_variables(): array
+    {
+        return [
+            'AUTH_LOGOUT_URL' => 'logout_url'
+        ];
+    }
 }

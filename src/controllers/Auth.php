@@ -76,6 +76,13 @@ class Auth extends Controller {
      */
     public function reloadAuth(): HTTPResponse
     {
+        try {
+            $session = $this->getRequest()->getSession();
+            if ($session) $session->clearAll();
+        } catch (\Exception $e) {
+            error_log($e);
+        }
+
         $process    = Director::absoluteURL($this->Link('process'));
         $error      = Director::absoluteURL($this->Link('error'));
         $challenge  = Site::app()->getAPIChallenge();
